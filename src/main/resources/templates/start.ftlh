@@ -4,15 +4,17 @@
     <title>Voice comments</title>
 </head>
 <body>
+<h3 id="indicator">Запись не ведётся</h3>
+<br>
 <div style="padding-left: 20px; padding-top: 10px">
-    <span id="indicator">o</span>
     <button id="start">Start</button>
     <button id="stop">Stop</button>
     <select id="language">
-        <option value="ru-RU" selected>Русский</option>
-        <option value="en-US">Немецкий</option>
+        <option value="en-US" selected>Английский</option>
+        <option value="de-DE">Немецкий</option>
     </select>
 </div>
+<br>
 
 <#if analyze??>
     <div style="padding: 20px; border: 2px solid black">
@@ -28,8 +30,8 @@
             let voice = [];
 
             document.querySelector('#start').addEventListener('click', function(){
-                document.querySelector('#indicator').removeAttribute('style');
-                document.querySelector('#indicator').setAttribute('style', 'width=10px; color: red;');
+                debugger;
+                document.querySelector('#indicator').value = "Ведётся запись...";
 
                 mediaRecorder.start();
             });
@@ -39,8 +41,7 @@
             });
 
             document.querySelector('#stop').addEventListener('click', function(){
-                document.querySelector('#indicator').removeAttribute('style');
-                document.querySelector('#indicator').setAttribute('style', 'width=10px; color: green;');
+                document.querySelector('#indicator').value = "Запись не ведётся";
 
                 mediaRecorder.stop();
             });
